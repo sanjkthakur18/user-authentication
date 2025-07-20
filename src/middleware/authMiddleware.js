@@ -25,3 +25,54 @@ const authMiddleware = async (req, res, next) => {
 };
 
 module.exports = authMiddleware;
+
+
+
+
+// const rateLimitMap = {};
+// const WINDOW_MS = 60 * 1000;
+// const MAX_REQ = 5;
+
+// const rateLimiterMiddlewareLogin = (req, res, next) => {
+//     const ip = req.ip;
+//     const email = req.body?.email || 'unknown';
+//     const now = Date.now();
+
+//     const key = `login:${email}:${ip}`;
+
+//     if (!rateLimitMap[key]) {
+//         rateLimitMap[key] = [];
+//     }
+
+//     rateLimitMap[key] = rateLimitMap[key].filter(t => now - t < WINDOW_MS);
+
+//     if (rateLimitMap[key].length >= MAX_REQ) {
+//         return res.status(429).json({ message: 'Too many login attempts for this email. Try again later.' });
+//     }
+
+//     rateLimitMap[key].push(now);
+//     next();
+// };
+
+// const rateLimiterMiddleware = (req, res, next) => {
+//     const ip = req.ip;
+//     const email = req.body?.id || 'unknown';
+//     const now = Date.now();
+
+//     const key = `login:${email}:${ip}`;
+
+//     if (!rateLimitMap[key]) {
+//         rateLimitMap[key] = [];
+//     }
+
+//     rateLimitMap[key] = rateLimitMap[key].filter(t => now - t < WINDOW_MS);
+
+//     if (rateLimitMap[key].length >= MAX_REQ) {
+//         return res.status(429).json({ message: 'Too many login attempts for this email. Try again later.' });
+//     }
+
+//     rateLimitMap[key].push(now);
+//     next();
+// };
+
+// module.exports = { rateLimiterMiddlewareLogin, rateLimiterMiddleware }
